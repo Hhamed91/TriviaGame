@@ -54,3 +54,24 @@ var quizQuestions = [
 
 ];
 
+var winImages = [
+    "/assets/images/win1.gif",
+    "/assets/images/win2.gif",
+    "/assets/images/win3.gif",
+    "/assets/images/win4.gif",
+    "/assets/images/win5.gif",
+
+
+
+
+];
+
+var lossImages = [
+    "/assets/images/loss1.gif",
+    "/assets/images/loss2.gif",
+    "/assets/images/loss3.gif",
+    "/assets/images/loss4.gif",
+    "/assets/images/loss5.gif",
+    "/assets/images/loss6.gif",
+
+];
