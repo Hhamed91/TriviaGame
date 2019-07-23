@@ -7,6 +7,85 @@ var lost = 0;
 var timer;
 
 
+//Starting the game
+
+$("#start").click(function(){
+    $("#start").remove();
+    $("#timer").html(counter);
+    loadQuestion();
+
+});
+
+// This is for the counter to start desending
+
+function countDown(){
+    counter--;
+    $("#time").html("Timer: " + counter);
+
+    if(counter === 0) {
+        timeUp();
+    }
+};
+
+
+//Display the question and list of the chioces to the browser
+
+function loadQuestion(){
+
+    counter = 30;
+    timer = setInterval(countDown, 1000);
+
+    var question = quizQuestions[currentQuestion].question;
+    var choices = quizQuestions[currentQuestion].choices;
+
+    // add the question to the game
+
+    $("#time").html("Timer: " + counter);
+    $("#game").html(`
+
+    
+        <h4 id="questions">${question}</h4>
+        ${loadChoices(choices)}
+        ${loadRemainingQuestion()}
+        `);
+    }
+
+    // To show the choices and loop over them
+    function loadChoices(choices){
+        var result = "";
+
+        for (var i = 0; i < choices.length; i++){
+            //while looping over, we are adding a p tag for each choice
+        result+= `<input type="radio" class= "choice" data-answer= "${choices[i]}">- ${choices[i]}`;
+        }
+
+        return result;
+
+    };
+
+    // Whenever is clicked on choices, check and see if it is the correct asnwer
+
+    $(document).on("click", ".choice", function(){
+        clearInterval(timer);
+        var selectedAnswer = $(this).attr("data-answer");
+        var correctAnswer = quizQuestions[currentQuestion].correctAnswer;
+        
+        if(correctAnswer === selectedAnswer){
+            score++
+            prloadImage ("win")
+            setTimeout(nextQuestion, 3000);
+
+        }else{
+            lost--;
+            prloadImage ("loss");
+            setTimeout(nextQuestion, 3000);
+
+
+
+        }
+    });
+
+
 // Start a 30 seconds timer for user to respond or choose an answer to each question
 function nextQuestion(){
 
@@ -36,82 +115,13 @@ function timeUp(){
 
 }
 
-// This is for the counter to start desending
 
-function countDown(){
-    counter--;
-    $("#time").html("Timer: " + counter);
-
-    if(counter === 0) {
-        timeUp();
-    }
-};
-
-
-//Display the question and list of the chioces to the browser
-
-
-function loadQuestion(){
-
-    counter = 30;
-    timer = setInterval(countDown, 1000);
-
-    var question = quizQuestions[currentQuestion].question;
-    var choices = quizQuestions[currentQuestion].choices;
-
-    // add the question to the game
-
-    $("#time").html("Timer: " + counter);
-    $("#game").html(`
-        <h4> ${question} </h4>
-        ${loadChoices(choices)}
-        ${loadRemainingQuestion()}
-        `);
-    }
-
-    // To show the choices and loop over them
-    function loadChoices(choices){
-        var result = "";
-
-        for (var i = 0; i < choices.length; i++){
-            //while looping over, we are adding a p tag for each choice
-        result+= `<p class= "choice" data-answer= "${choices[i]}"> ${choices[i]}</p>`;
-        }
-
-        return result;
-
-    };
-
-    // Whenever is clicked on choices, check and see if it is the correct asnwer
-
-    $(document).on("click", ".choice", function(){
-        clearInterval(timer);
-        var selectedAnswer = $(this).attr("data-answer");
-        var correctAnswer = quizQuestions[currentQuestion].correctAnswer;
-        
-        if(correctAnswer === selectedAnswer){
-            score++
-            prloadImage ("win")
-            setTimeout(nextQuestion, 3000);
-
-            // console.log("win win");
-
-
-        }else{
-            lost--;
-            // console.log("lost");
-            prloadImage ("loss");
-            setTimeout(nextQuestion, 3000);
-
-
-
-        }
-        // console.log("meh" , selectedAnswer);
-    });
 
     // For the last page to show the status of the total game
     function displayResult(){
+        
         var absLost = Math.abs(lost);
+        
         var result = `
         <p> You got ${score} question(s) right.</p>
         <p> You missed ${absLost} question(s). </p>
@@ -119,6 +129,8 @@ function loadQuestion(){
         `;
 
         $("#game").html(result)
+        $("#timer").remove();
+        
 
     };
 
@@ -140,7 +152,7 @@ function loadQuestion(){
         var remainingQuesion = quizQuestions.length -(currentQuestion + 1);
         var totalQuestion = quizQuestions.length;
 
-        return `Remaining Questions: ${remainingQuesion}/${totalQuestion}`;
+        return `<h5> Remaining Questions: ${remainingQuesion}/${totalQuestion}</h5>`;
     };
 
 
@@ -162,7 +174,7 @@ function loadQuestion(){
             $("#game").html(`
             <p class="preload-image"> Congrats, you picked the correct answer </p>
             <p class="preload-image"> Woop Woop!! You got it right. <br> The correct answer is <b> ${correctAnswer} </b> </p>
-            <img src="${randomImage(winImages)}"/>
+            <img class="giphy" src="${randomImage(winImages)}"/>
 
                 `);
 
@@ -170,7 +182,7 @@ function loadQuestion(){
             $("#game").html(`
             <p class="preload-image"> The correct answer was ${correctAnswer}</p>
             <p class="preload-image"> You are not a true fan!!</p>
-            <img src="${randomImage(lossImages)}"/>
+            <img class="giphy" src="${randomImage(lossImages)}"/>
                 
                 `);
 
@@ -178,10 +190,5 @@ function loadQuestion(){
     }
 
     
-$("#start").click(function(){
-    $("#start").remove();
-    $("#timer").html(counter);
-    loadQuestion();
 
-});
 
