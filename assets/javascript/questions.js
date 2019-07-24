@@ -81,6 +81,4 @@ var lossImages = [
     "/assets/images/loss8.gif",
     "/assets/images/loss9.gif",
 
-    
-
 ];
