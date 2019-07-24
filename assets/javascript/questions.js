@@ -1,6 +1,6 @@
 var quizQuestions = [
     {
-        question: "1-What is Liz’s favorite night-time food?",
+        question: "1-What is Liz\'s favorite night-time food?",
         choices: ["Night chips", "Night fries","Night cheese","Night pizza"],
         correctAnswer: "Night fries"
     },

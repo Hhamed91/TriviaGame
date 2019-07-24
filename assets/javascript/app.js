@@ -56,7 +56,7 @@ function loadQuestion(){
 
         for (var i = 0; i < choices.length; i++){
             //while looping over, we are adding a p tag for each choice
-        result+= `<input type="radio" class= "choice" data-answer= "${choices[i]}">- ${choices[i]}`;
+        result+= `<div class="choice" choice" data-answer= "${choices[i]}"> ${choices[i]} <div/>`;
         }
 
         return result;
@@ -152,7 +152,7 @@ function timeUp(){
         var remainingQuesion = quizQuestions.length -(currentQuestion + 1);
         var totalQuestion = quizQuestions.length;
 
-        return `<h5> Remaining Questions: ${remainingQuesion}/${totalQuestion}</h5>`;
+        return `<div> <h5> Remaining Questions: ${remainingQuesion}/${totalQuestion}</h5> </div>`;
     };
 
 
