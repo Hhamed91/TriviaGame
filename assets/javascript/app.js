@@ -56,7 +56,7 @@ function loadQuestion(){
 
         for (var i = 0; i < choices.length; i++){
             //while looping over, we are adding a p tag for each choice
-        result+= `<input type="radio" class= "choice" data-answer= "${choices[i]}">- ${choices[i]}`;
+        result+= `<div style="inline"  class= "choice" data-answer= "${choices[i]}"> ${choices[i]} </div>`;
         }
 
         return result;

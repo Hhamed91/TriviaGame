@@ -33,6 +33,11 @@ h4{
 
     } 
 
+.choice{
+    cursor: pointer;
+    border: 1px solid beige;
+}
+
 
 
 
