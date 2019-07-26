@@ -55,15 +55,15 @@ var quizQuestions = [
 ];
 
 var winImages = [
-    "/assets/images/win1.gif",
-    "/assets/images/win2.gif",
-    "/assets/images/win3.gif",
-    "/assets/images/win4.gif",
-    "/assets/images/win5.gif",
-    "/assets/images/win6.gif",
-    "/assets/images/win7.gif",
-    "/assets/images/win8.gif",
-    "/assets/images/win9.gif",
+    "assets/images/win1.gif",
+    "assets/images/win2.gif",
+    "assets/images/win3.gif",
+    "assets/images/win4.gif",
+    "assets/images/win5.gif",
+    "assets/images/win6.gif",
+    "assets/images/win7.gif",
+    "assets/images/win8.gif",
+    "assets/images/win9.gif",
 
 
 
@@ -71,15 +71,15 @@ var winImages = [
 ];
 
 var lossImages = [
-    "/assets/images/loss1.gif",
-    "/assets/images/loss2.gif",
-    "/assets/images/loss3.gif",
-    "/assets/images/loss4.gif",
-    "/assets/images/loss5.gif",
-    "/assets/images/loss6.gif",
-    "/assets/images/loss7.gif",
-    "/assets/images/loss8.gif",
-    "/assets/images/loss9.gif",
+    "assets/images/loss1.gif",
+    "assets/images/loss2.gif",
+    "assets/images/loss3.gif",
+    "assets/images/loss4.gif",
+    "assets/images/loss5.gif",
+    "assets/images/loss6.gif",
+    "assets/images/loss7.gif",
+    "assets/images/loss8.gif",
+    "assets/images/loss9.gif",
 
     
 
